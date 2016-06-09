@@ -14,8 +14,8 @@ gulp.task ('missionZero', function(){
 });
 
 gulp.task('missionOne', function(){
-	gulp.src('dev/*.css')
-		.pipe(concatCss('1_style.css'))
+	gulp.src('dev/css/*.css')
+		.pipe(concatCss('style.css'))
 		.pipe(autopref({
 			browsers:['last 10 version'],
 			cascade: false
@@ -32,14 +32,14 @@ gulp.task('missionTwo', function(){
 		.pipe(connect.reload());
 });
 
-gulp.task('missonthree', function(){
-		gulp.src('dev/img/*.*').pipe(gulp.dest('buld/img/'));
-}');
+gulp.task('missionthree', function(){
+		gulp.src('dev/img/*.*').pipe(gulp.dest('build/img/'));
+});
 
 gulp.task('default', function(){
 	gulp.start('missionOne', 'missionTwo', 'missionZero', 'missionthree');
 
-	gulp.watch(['dev/*.css'], function(){
+	gulp.watch(['dev/css/*.css'], function(){
 		gulp.start('missionOne');
 	});	
 	gulp.watch(['dev/html/**/*.html'], function(){
